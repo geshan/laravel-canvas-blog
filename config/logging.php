@@ -51,18 +51,10 @@ return [
     |
     */
 
-    'channels' => [
-        'stdout' => [
-            'driver' => 'monolog',
-            'handler' => StreamHandler::class,
-            'level' => env('LOG_LEVEL', 'debug'),
-            'with' => [
-                'stream' => 'php://stdout',
-            ],
-        ],
+    'channels' => [        
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single', 'stdout'],
+            'channels' => ['single', 'stderr'],
             'ignore_exceptions' => false,
         ],
 
