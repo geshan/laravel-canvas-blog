@@ -20,6 +20,7 @@ COPY .env.example /var/www/html/.env
 
 RUN php artisan config:cache && \
     php artisan route:cache && \
+    php artisan config:clear && \
     php artisan storage:link && \
     chmod 777 -R /var/www/html/storage/ && \
     chown -R www-data:www-data /var/www/ && \
@@ -39,6 +40,7 @@ COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.con
 COPY .env.prod /var/www/html/.env
 
 RUN php artisan config:cache && \
+    php artisan config:clear && \
     php artisan route:cache && \
     php artisan storage:link && \
     chmod 777 -R /var/www/html/storage/ && \
